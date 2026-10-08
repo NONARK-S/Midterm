@@ -1,0 +1,26 @@
+:root{
+  --arcane:#8E6BD1; --torch:#F0A93B; --chalk:#EDE8DA;
+  --crit:#B23A48; --ink:#1B1F3B; --muted:#A9ABC8;
+}
+
+.die-wrap{display:flex;flex-direction:column;align-items:center;gap:1rem}
+.die{width:min(260px,70vw);cursor:pointer;background:none;border:0;padding:0}
+.die svg{width:100%;height:auto;display:block}
+.die .face{fill:var(--arcane);stroke:var(--torch);stroke-width:4;stroke-linejoin:round}
+.die .edge{fill:none;stroke:var(--torch);stroke-width:2;opacity:.7}
+.die .num{font-family:Georgia,serif;font-size:64px;fill:var(--chalk);text-anchor:middle}
+
+.die.rolling{animation:tumble .8s cubic-bezier(.3,.7,.4,1)}
+@keyframes tumble{
+  0%{transform:rotate(0) scale(1)}
+  40%{transform:rotate(300deg) scale(.8)}
+  100%{transform:rotate(720deg) scale(1)}
+}
+.die.nat20 .face{fill:var(--torch)}
+.die.nat20 .num{fill:var(--ink)}
+.die.nat1 .face{fill:var(--crit)}
+
+#roll-msg{min-height:3.2rem;text-align:center;font-size:1.2rem;margin:0}
+#roll-log{color:var(--muted);margin:0;text-align:center}
+
+@media (prefers-reduced-motion:reduce){.die.rolling{animation:none}}
